@@ -33,6 +33,17 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         margin: '7px'
+    },
+    toolbar: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: theme.spacing(0, 1),
+        ...theme.mixins.toolbar,
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
     }
 }));
 
@@ -42,7 +53,9 @@ function App() {
         <ThemeProvider theme={theme}>
             <div className="App">
                 <MainMenu/>
-                <Grid container className={classes.root}>
+                <main className={classes.content}>
+                    <div className={classes.toolbar} />
+                <Grid container>
                         <Grid container justify="center" spacing={12}>
                             {[0, 1, 2, 3, 4, 5, 6, 76, 7, 8].map(value => (
                                 <Grid key={value} item className={classes.card}>
@@ -51,6 +64,7 @@ function App() {
                             ))}
                         </Grid>
                 </Grid>
+                </main>
             </div>
         </ThemeProvider>
     );
